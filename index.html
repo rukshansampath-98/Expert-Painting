@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Expert Paintin</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Orbitron:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#f6f6f6;
+color:#333;
+}
+
+/* LOADER */
+
+#loader{
+position:fixed;
+width:100%;
+height:100vh;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+color:#ffd000;
+font-family:'Orbitron',sans-serif;
+font-size:34px;
+z-index:9999;
+}
+
+.dots span{
+animation:blink 1.5s infinite;
+}
+
+.dots span:nth-child(2){animation-delay:.2s}
+.dots span:nth-child(3){animation-delay:.4s}
+
+@keyframes blink{
+0%{opacity:0}
+50%{opacity:1}
+100%{opacity:0}
+}
+
+/* HEADER */
+
+header{
+background:#111;
+color:white;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+font-family:'Orbitron',sans-serif;
+font-size:21px;
+color:#ffd000;
+letter-spacing:2px;
+}
+
+.menu{
+font-size:28px;
+cursor:pointer;
+}
+
+/* MENU */
+
+nav{
+position:fixed;
+right:-260px;
+top:0;
+width:260px;
+height:100%;
+background:#222;
+padding:30px;
+transition:.4s;
+}
+
+nav a{
+display:block;
+color:white;
+margin:20px 0;
+text-decoration:none;
+font-size:18px;
+}
+
+nav.open{
+right:0;
+}
+
+/* HERO */
+
+.hero{
+background:linear-gradient(45deg,#ffd000,#ffb300);
+padding:80px 20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:36px;
+margin-bottom:15px;
+animation:fadeUp 1s;
+}
+
+.search{
+display:flex;
+justify-content:center;
+margin-top:20px;
+}
+
+.search input{
+padding:12px;
+width:60%;
+border:none;
+border-radius:25px 0 0 25px;
+}
+
+.search button{
+padding:12px 20px;
+border:none;
+background:#111;
+color:white;
+border-radius:0 25px 25px 0;
+cursor:pointer;
+}
+
+.quick button{
+margin:12px;
+padding:12px 28px;
+border:none;
+background:#111;
+color:white;
+border-radius:30px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quick button:hover{
+transform:scale(1.1);
+background:#333;
+}
+
+/* SECTION */
+
+section{
+padding:70px 20px;
+animation:fadeUp 1s;
+}
+
+.title{
+text-align:center;
+font-size:30px;
+margin-bottom:25px;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+transition:.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.08);
+}
+
+/* VIDEO */
+
+video{
+width:100%;
+border-radius:10px;
+margin-top:20px;
+}
+
+/* SKILLS */
+
+.skill{
+margin:20px 0;
+}
+
+.bar{
+height:20px;
+background:#ddd;
+border-radius:20px;
+overflow:hidden;
+}
+
+.bar span{
+display:block;
+height:100%;
+background:#ffb300;
+animation:grow 2s;
+}
+
+/* CERTIFICATES */
+
+.cert-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-top:30px;
+}
+
+.cert-card{
+background:white;
+padding:10px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:.3s;
+text-align:center;
+}
+
+.cert-card:hover{
+transform:translateY(-8px);
+}
+
+.cert-card img{
+width:100%;
+border-radius:10px;
+}
+
+/* CONTACT */
+
+.contact{
+text-align:center;
+}
+
+.contact button{
+padding:12px 25px;
+margin:10px;
+border:none;
+background:#111;
+color:white;
+border-radius:25px;
+cursor:pointer;
+transition:.3s;
+}
+
+.contact button:hover{
+background:#333;
+}
+
+/* FEEDBACK */
+
+textarea{
+width:100%;
+height:100px;
+padding:10px;
+border-radius:10px;
+}
+
+.star{
+font-size:26px;
+color:gold;
+cursor:pointer;
+}
+
+.card{
+background:white;
+padding:15px;
+margin-top:10px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25d366;
+color:white;
+padding:15px;
+border-radius:50%;
+font-size:24px;
+text-decoration:none;
+}
+
+/* FOOTER */
+
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes grow{
+from{width:0}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="loader">
+Expert Painting Service
+<div class="dots">
+<span>.</span>
+<span>.</span>
+<span>.</span>
+</div>
+</div>
+
+<header>
+
+<div class="logo">Expert Painting Service</div>
+
+<div class="menu" onclick="menu()">☰</div>
+
+</header>
+
+<nav id="nav">
+
+<a href="#plaint">Paint</a>
+<a href="#polish">Polish</a>
+<a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
+<a href="#feedback">Feedback</a>
+
+</nav>
+
+<div class="hero">
+
+<h1>Professional Painting & Polishing Services</h1>
+
+<div class="search">
+
+<input id="search" placeholder="Search">
+
+<button onclick="search()">🔍</button>
+
+</div>
+
+<div class="quick">
+
+<button onclick="go('plaint')">Paint</button>
+<button onclick="go('polish')">Polish</button>
+
+</div>
+
+</div>
+
+<section id="plaint">
+
+<h2 class="title">Painting Work Samples</h2>
+
+<div class="gallery">
+
+<img src="paint1.jpeg">
+<img src="paint2.jpeg">
+<img src="paint3.jpeg">
+<img src="paint4.jpeg">
+<img src="paint5.jpeg">
+<img src="paint6.jpeg">
+</div>
+
+<video controls>
+<source src="paintvideo.mp4">
+</video>
+<p>ඇයි තවත් කාලය නාස්ති කරන්නේ...? හරියට වැඩක් හරිම තැනින් කරගන්න එකතුවෙන්න අපිත් එක්ක.දැන්ම කතාකරන්න ඔයාගෙ වැඩෙත් හරියටම හරිම තැනින් විශ්වාසවන්තව කරගන්න...</p>
+<br>
+<p>Why waste more time...? Join us to get the job done right and right. Talk to us now and get your job done right and right and right..Expert Painting Service is always with you...</p>
+</section>
+
+<section id="polish">
+
+<h2 class="title">Polish Work Samples</h2>
+
+<div class="gallery">
+
+<img src="polish1.jpeg">
+<img src="polish2.jpeg">
+<img src="polish3.jpeg">
+<img src="polish4.jpeg">
+<img src="polish5.jpeg">
+<img src="polish6.jpeg">
+</div>
+
+<video controls>
+<source src="polishvideo.mp4">
+</video>
+<p>ඇයි තවත් කාලය නාස්ති කරන්නේ...? හරියට වැඩක් හරිම තැනින් කරගන්න එකතුවෙන්න අපිත් එක්ක.දැන්ම කතාකරන්න ඔයාගෙ වැඩෙත් හරියටම හරිම තැනින් විශ්වාසවන්තව කරගන්න...</p>
+ <br>
+<p>Why waste more time...? Join us to get the job done right and right. Talk to us now and get your job done right and right and right..Expert Painting Service is always with you...</p>
+</section>
+
+<section id="skills">
+
+<h2 class="title">My Skills</h2>
+
+<div class="skill">
+Painting Work
+<div class="bar"><span style="width:90%"></span></div>
+</div>
+
+<div class="skill">
+Furniture Finisher
+<div class="bar"><span style="width:95%"></span></div>
+</div>
+
+<h2 class="title">Certificates</h2>
+
+<div class="cert-grid">
+
+<div class="cert-card">
+<img src="nvq3.jpeg">
+<p>Professional wood finishing certificate Nvq Level 3</p>
+</div>
+
+<div class="cert-card">
+<img src="nvq3.jpeg">
+<p>Professional wood finishing certificate Nvq Level 3</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact" class="contact">
+
+<h2 class="title">Contact Me</h2>
+
+<button onclick="window.open('https://wa.me/94764866810')">WhatsApp</button>
+
+<button onclick="window.location='mailto:rukshansampath98@gmail.com'">Email</button>
+
+<p>Phone : 0764866810</p>
+
+<img src="qr.jpeg" width="150">
+
+</section>
+
+<section id="feedback">
+
+<h2 class="title">Customer Feedback</h2>
+
+<textarea id="fb">Your work is amazing!</textarea>
+
+<br><br>
+
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+
+<br><br>
+
+<button onclick="add()">Submit</button>
+
+<div id="list"></div>
+
+</section>
+
+<footer>
+2026 Expert Painting Service
+
+</footer>
+
+<a class="whatsapp" href="https://wa.me/94700000000">💬</a>
+
+<script>
+
+window.onload=function(){
+setTimeout(()=>{
+document.getElementById("loader").style.display="none"
+},1500)
+}
+
+function menu(){
+document.getElementById("nav").classList.toggle("open")
+}
+
+function go(id){
+document.getElementById(id).scrollIntoView()
+}
+
+function search(){
+
+let t=document.getElementById("search").value.toLowerCase()
+
+if(t.includes("plaint")) go("plaint")
+if(t.includes("polish")) go("polish")
+if(t.includes("skill")) go("skills")
+if(t.includes("contact")) go("contact")
+
+}
+
+function add(){
+
+let text=document.getElementById("fb").value
+
+let card=document.createElement("div")
+
+card.className="card"
+
+card.innerHTML="⭐⭐⭐⭐⭐<br>"+text
+
+document.getElementById("list").prepend(card)
+
+}
+
+</script>
+
+</body>
+</html>
